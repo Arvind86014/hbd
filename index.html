@@ -175,8 +175,8 @@
             <p style="color: #ccc; font-size: 0.9rem; margin: 0; line-height: 1.5;">
                 An unexpected heap overflow sequence has locked your phone terminal background workers. Immediate manual override protocol is required.
             </p>
-            <!-- FIXED FUNCTION CALL HERE -->
-            <button class="bypass-trigger" onclick="runProTakeover()">TRIGGER OVERRIDE</button>
+            <!-- REMOVED INLINE ONCLICK EVENT HERE -->
+            <button id="trigger-btn" class="bypass-trigger">TRIGGER OVERRIDE</button>
         </div>
     </div>
 
@@ -304,3 +304,10 @@ if(audioCtx) audioCtx.close();
 document.getElementById("panic-hud").style.display = "none";
 document.getElementById("grand-finale").style.display = "flex";
 }
+// SAFE ADHERENCE TARGET WINDOW LOAD HANDLER
+window.addEventListener('DOMContentLoaded', () => {
+const actionButton = document.getElementById("trigger-btn");
+if(actionButton) {
+actionButton.addEventListener('click', runProTakeover);
+}
+});
