@@ -1,13 +1,12 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRITICAL_SYSTEM_FAILURE</title>
-    <!-- PyScript Core to run Python inside the mobile browser -->
-    <link rel="stylesheet" href="https://pyscript.net" />
-    <script type="module" src="https://pyscript.net"></script>
+    <!-- Stable PyScript Core CDN Links -->
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
     <style>
         body {
             background-color: #000000;
@@ -32,7 +31,7 @@
             white-space: pre-wrap;
             word-wrap: break-word;
         }
-        .warning { color: #FF0000; font-weight: 900; } /* Dangerous Warning Red */
+        .warning { color: #FF0000; font-weight: 900; } /* Alert Red */
         .cyan { color: #00FFFF; }
         .yellow { color: #FFFF00; }
     </style>
@@ -44,12 +43,12 @@
     <script type="py">
         import asyncio
         import random
-        from pyscript import display
+        from js import document  # Fixed browser window global access handler
 
         async def start_breach():
             console = document.getElementById("console")
             
-            # --- STAGE 1: Pure Terminal Takeover (Fast and Chaotic) ---
+            # --- STAGE 1: Pure Terminal Takeover ---
             danger_logs = [
                 "[CRITICAL] Exploit payload injected via port 8080...",
                 "[OVERRIDE] Disabling local firewall subroutines...",
@@ -79,7 +78,7 @@
             📅 DATE DETECTED: <span class='cyan'><b>10 OCTOBER</b></span><br>
             🚨 BREACH AUTHORIZED BY: <span class='yellow'><b>ARVIND MAURYA</b></span><br><br>
             
-            🎂 <span class='bold'>H A P P Y   B I R T H D A Y !</span> 🎂<br><br>
+            🎂 H A P P Y   B I R T H D A Y ! 🎂<br><br>
             
             <span class='cyan'>May your production servers never crash,<br>
             and your code execute flawlessly forever.</span><br><br>
@@ -91,10 +90,10 @@
             while True:
                 console.innerHTML = celebration_screen
                 await asyncio.sleep(0.4)
-                console.innerHTML = "" # Complete clear for aggressive flickering text
+                console.innerHTML = "" 
                 await asyncio.sleep(0.12)
 
-        # Trigger the system run sequence
+        # Trigger the system run sequence safely
         asyncio.ensure_future(start_breach())
     </script>
 
