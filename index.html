@@ -1,0 +1,102 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRITICAL_SYSTEM_FAILURE</title>
+    <!-- PyScript Core to run Python inside the mobile browser -->
+    <link rel="stylesheet" href="https://pyscript.net" />
+    <script type="module" src="https://pyscript.net"></script>
+    <style>
+        body {
+            background-color: #000000;
+            color: #00FF00; /* Matrix Toxic Green */
+            font-family: 'Courier New', Courier, monospace;
+            padding: 15px;
+            margin: 0;
+            text-align: center;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #console {
+            font-weight: bold;
+            font-size: 1.1rem;
+            line-height: 1.5;
+            width: 100%;
+            max-width: 600px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .warning { color: #FF0000; font-weight: 900; } /* Dangerous Warning Red */
+        .cyan { color: #00FFFF; }
+        .yellow { color: #FFFF00; }
+    </style>
+</head>
+<body>
+
+    <div id="console">CONNECTING TO HOST TERMINAL...</div>
+
+    <script type="py">
+        import asyncio
+        import random
+        from pyscript import display
+
+        async def start_breach():
+            console = document.getElementById("console")
+            
+            # --- STAGE 1: Pure Terminal Takeover (Fast and Chaotic) ---
+            danger_logs = [
+                "[CRITICAL] Exploit payload injected via port 8080...",
+                "[OVERRIDE] Disabling local firewall subroutines...",
+                "[STEALTH] Intercepting secure user credentials...",
+                "[EXTRACT] Downloading core database blocks...",
+                "[DECRYPT] Unlocking encrypted personality payload..."
+            ]
+            
+            for log in danger_logs:
+                for _ in range(4):
+                    hex_addr = f"0x{random.randint(0x100000, 0xFFFFFF):X}"
+                    console.innerHTML = f"<span class='warning'>{hex_addr} {log}</span>"
+                    await asyncio.sleep(0.08)
+                await asyncio.sleep(0.2)
+
+            # --- STAGE 2: The Main Grand Celebration Overrun ---
+            celebration_screen = """
+            <span class='warning'>===============================================</span><br>
+            <span class='warning'>⚠️ ALERT: TERMINAL ACCESS TOTALLY COMPROMISED ⚠️</span><br>
+            <span class='warning'>===============================================</span><br><br>
+            
+            <span class='cyan'>[⚡ SYSTEM PROTOCOL OVERRIDE SUCCESSFULLY EXECUTED ⚡]</span><br><br>
+            
+            👑 <span class='yellow'><b>PRINCE GUPTA</b></span> 👑<br>
+            <span class='warning'><b>[ TARGET ACQUIRED FOR GRAND CELEBRATION ]</b></span><br><br>
+            
+            📅 DATE DETECTED: <span class='cyan'><b>10 OCTOBER</b></span><br>
+            🚨 BREACH AUTHORIZED BY: <span class='yellow'><b>ARVIND MAURYA</b></span><br><br>
+            
+            🎂 <span class='bold'>H A P P Y   B I R T H D A Y !</span> 🎂<br><br>
+            
+            <span class='cyan'>May your production servers never crash,<br>
+            and your code execute flawlessly forever.</span><br><br>
+            
+            <span class='warning'>===============================================</span>
+            """
+            
+            # Infinite flashing visual glitch loop
+            while True:
+                console.innerHTML = celebration_screen
+                await asyncio.sleep(0.4)
+                console.innerHTML = "" # Complete clear for aggressive flickering text
+                await asyncio.sleep(0.12)
+
+        # Trigger the system run sequence
+        asyncio.ensure_future(start_breach())
+    </script>
+
+</body>
+</html>
