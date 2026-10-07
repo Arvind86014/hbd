@@ -19,7 +19,6 @@
             -webkit-user-select: none;
         }
 
-        /* Scanline Overlay for retro hacker display look */
         .scanlines {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -29,7 +28,6 @@
             pointer-events: none;
         }
 
-        /* STAGE 1: Deceptive Initial Gateway Trap */
         #gateway {
             position: absolute;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -68,7 +66,6 @@
             animation: panicPulse 0.8s infinite alternate;
         }
 
-        /* STAGE 2: Extreme Full Screen Hacking HUD */
         #panic-hud {
             display: none;
             width: 100%;
@@ -122,7 +119,6 @@
         #log-stream { line-height: 1.5; color: #00FF33; }
         #memory-matrix { opacity: 0.5; font-size: 0.8rem; word-break: break-all; color: #FF0033; }
 
-        /* STAGE 3: THE FINALE REVEAL DROP */
         #grand-finale {
             display: none;
             position: absolute;
@@ -179,11 +175,12 @@
             <p style="color: #ccc; font-size: 0.9rem; margin: 0; line-height: 1.5;">
                 An unexpected heap overflow sequence has locked your phone terminal background workers. Immediate manual override protocol is required.
             </p>
+            <!-- FIXED FUNCTION CALL HERE -->
             <button class="bypass-trigger" onclick="runProTakeover()">TRIGGER OVERRIDE</button>
         </div>
     </div>
 
-    <!-- PRO HACKER DESTRUCTIVE HUD DISPLAY -->
+    <!-- PRO HACKER HUD DISPLAY -->
     <div id="panic-hud">
         <div class="hud-banner">⚡!! WARNING: TOTAL SYSTEM OVERRIDE ACTIVE !!⚡</div>
         
@@ -238,12 +235,10 @@
             "Executing permanent master remote hijack sequence..."
         ];
 
-        // Synthesizes an aggressive technical radar tracking chime sweep (Panic trigger)
         function triggerHackerPanicSound() {
             try {
                 audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 
-                // Deep pulse loop generator
                 let osc1 = audioCtx.createOscillator();
                 let gain1 = audioCtx.createGain();
                 osc1.type = 'sawtooth';
@@ -253,7 +248,6 @@
                 gain1.connect(audioCtx.destination);
                 osc1.start();
 
-                // Piercing alternating binary tracking beep frequency
                 let osc2 = audioCtx.createOscillator();
                 let gain2 = audioCtx.createGain();
                 osc2.type = 'square';
@@ -262,29 +256,30 @@
                 
                 let mod = audioCtx.createOscillator();
                 let modGain = audioCtx.createGain();
-                mod.frequency.value = 5; // Fast pacing sound beats
-                modGain.gain.value = 300; // Deep sweep alteration range
+                mod.frequency.value = 5; 
+                modGain.gain.value = 300; 
                 
                 mod.connect(modGain);
+                modGain.connect(osc2.frequency);
+                osc2.connect(gain2);
+                gain2.connect(audioCtx.destination);
+                
+                mod.start();
+                osc2.start();
+            } catch(e) {
+                console.log("Audio block bypass failed.");
+            }
+        }
+
+        async function runProTakeover() {
+            triggerHackerPanicSound();
+
+            document.getElementById("gateway").style.display = "none";
 Use code with caution.
-modGain.connect(osc2.frequency);
-osc2.connect(gain2);
-gain2.connect(audioCtx.destination);
-mod.start();
-osc2.start();
-} catch(e) {
-console.log("Audio block bypass failed.");
-}
-}
-async function runProTakeover() {
-// Instant trigger aggressive noise system
-triggerHackerPanicSound();
-document.getElementById("gateway").style.display = "none";
 document.getElementById("panic-hud").style.display = "grid";
 const logStream = document.getElementById("log-stream");
 const memMatrix = document.getElementById("memory-matrix");
 const loadPercent = document.getElementById("percent-load");
-// Fast chaotic streaming threat matrix background thread
 let matrixThread = setInterval(() => {
 let textBank = "0101010101010x7FFF0x8B2A0x0E1C_SYSTEM_OVERRUN_ERROR_MALFUNCTION_";
 let randomBlock = "";
@@ -293,24 +288,19 @@ randomBlock += textBank[Math.floor(Math.random() * textBank.length)];
 }
 memMatrix.innerHTML = randomBlock + " " + memMatrix.innerHTML.substring(0, 600);
 }, 25);
-// Step by step full log terminal loading sequences
 let totalSteps = dynamicBreachLogs.length;
 for (let i = 0; i < totalSteps; i++) {
 let currentPercentage = Math.floor(((i + 1) / totalSteps) * 100);
 loadPercent.innerText = ${currentPercentage}%;
 let hexHeader = "0x" + Math.floor(Math.random()*16777215).toString(16).toUpperCase();
 logStream.innerHTML += <div style='margin-bottom:8px;'><span style='color:#FF0033;'>${hexHeader}</span> [CRITICAL] ${dynamicBreachLogs[i]} ... <span style='color:#00FFFF;'>[DONE]</span></div>;
-// Keep pulling log window downward automatically
 logStream.parentElement.scrollTop = logStream.parentElement.scrollHeight;
-await sleep(600 + Math.random() * 250); // Speed control for the prank phase (approx 6-7 seconds)
+await sleep(600 + Math.random() * 250);
 }
-// Final lock confirmation
 loadPercent.innerText = "100%";
 await sleep(500);
-// KILL PANIC AND DROP THE SURPRISE REVEAL
 clearInterval(matrixThread);
-if(audioCtx) audioCtx.close(); // Sound immediately stops for shock relief effect
+if(audioCtx) audioCtx.close();
 document.getElementById("panic-hud").style.display = "none";
 document.getElementById("grand-finale").style.display = "flex";
 }
-
